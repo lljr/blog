@@ -45,6 +45,8 @@ flycheck_*.el
 # org publish output directory
 public
 
+# org publish packages directory cache
+.packages/
 
 # projectiles files
 .projectile
