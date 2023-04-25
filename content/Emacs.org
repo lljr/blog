@@ -2,6 +2,12 @@
 #+AUTHOR: Jon Rostran
 #+PROPERTY: header-args:emacs-lisp :tangle ~/.config/emacs/init.el :comments no :results silent
 
+* Getting Started
+In ~emacs/config.org~, run ~M-x org-babel-tangle~ when visiting the
+file.  This command will paste all the code blocks to ~init.el~, the
+file Emacs reads on start-up to update its configuration.
+
+Keychord  ~C-c C-v C-t~ (~org-babel-tangle~) is also available instead.
 * Setup
 Emacs documents all of its variables.  When in doubt, call
 ~M-x describe-variable~ or ~M-x describe-function~.
