@@ -1,3 +1,0 @@
-* Welcome to my Lisp Blog
-
-My current Emacs config can be found [[file:Emacs.org][here]].

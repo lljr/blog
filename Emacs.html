@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org806b4f1">Setup</a>
+<ul>
+<li><a href="#org004726f">Package manager</a></li>
+<li><a href="#orgc6ed6a9">Default Emacs UI</a></li>
+<li><a href="#org7947cbd">General</a></li>
+<li><a href="#org3748e7a">Custom prefix keys</a></li>
+<li><a href="#orge6abb5b">Org</a>
+<ul>
+<li><a href="#org3dd95e7">Org Tree Slide</a></li>
+</ul>
+</li>
+<li><a href="#org9961508">Extras</a>
+<ul>
+<li><a href="#orgb3a1f36">Electricity</a></li>
+<li><a href="#org49ff447">Prettify Symbols</a></li>
+<li><a href="#org799ce97">Rainbow Delimiters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgf554d10">Packages</a>
+<ul>
+<li><a href="#org694d338">Vertico / Orderless / CtrlF / Marginalia / Consult</a></li>
+<li><a href="#org433f368">Corfu &amp; Cape</a></li>
+<li><a href="#orgb8d0dfc">Dired</a></li>
+<li><a href="#org5a1052e">Web Development</a></li>
+<li><a href="#org6cd8f70">Git blame</a></li>
+<li><a href="#org9e3f6ad">Clojure</a></li>
+<li><a href="#orgd6b2b51">Dev tools</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org806b4f1" class="outline-2">
+<h2 id="org806b4f1">Setup</h2>
+<div class="outline-text-2" id="text-org806b4f1">
+<p>
+Emacs documents all of its variables.  When in doubt, call
+<code>M-x describe-variable</code> or <code>M-x describe-function</code>.
+Keychords may also be used: <code>C-h v [variable symbol]</code>, <code>C-h f [function symbol]</code> respectively.
+</p>
+</div>
+<div id="outline-container-org004726f" class="outline-3">
+<h3 id="org004726f">Package manager</h3>
+<div class="outline-text-3" id="text-org004726f">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">package</span>)
+(add-to-list 'package-archives '(<span style="font-style: italic;">"melpa"</span> . <span style="font-style: italic;">"https://melpa.org/packages/"</span>))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc6ed6a9" class="outline-3">
+<h3 id="orgc6ed6a9">Default Emacs UI</h3>
+<div class="outline-text-3" id="text-orgc6ed6a9">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(menu-bar-mode -1)            <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">Disable for more headspace</span>
+(tool-bar-mode -1)                      <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">Remove toolbar</span>
+(scroll-bar-mode -1)                    <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">Remove scroll bar</span>
+(save-place-mode 1)           <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">Remember cursor position</span>
+(blink-cursor-mode 0)                   <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">Stop cursor blink</span>
+(load-theme 'modus-vivendi nil)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7947cbd" class="outline-3">
+<h3 id="org7947cbd">General</h3>
+<div class="outline-text-3" id="text-org7947cbd">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">setq-default</span> inhibit-startup-message t              <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">Don't show default emacs startup screen</span>
+              window-combination-resize t            <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">Resize windows proportionally</span>
+              display-time-default-load-average nil  <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">Don't show system load time in modeline</span>
+              indent-tabs-mode nil                   <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">Stop using tabs to indent</span>
+              tab-width 4                                            <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">Change default tab width</span>
+
+              <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">My machine has enough memory to increase the default values</span>
+              gc-cons-threshold 50000000
+              large-file-warning-threshold 100000000
+
+              <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Increase default max recursion depth (when coding in Elisp)</span>
+              max-specpdl-size 19500
+              max-lisp-eval-depth 24000
+
+              bidi-paragraph-direction 'left-to-right <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">Just work with left to right langs</span>
+              bidi-inhibit-bpa t
+
+              <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Directories</span>
+              delete-by-moving-to-trash t
+              auto-revert-check-vc-info t
+
+              use-short-answers t)
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Toggle features not available in a fresh Emacs install</span>
+(put 'downcase-region 'disabled nil)                 <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">Allow use of C-x C-l (downcase region)</span>
+(put 'upcase-region 'disabled nil)                   <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">Allow use of C-x C-u (capitalize region)</span>
+(put 'narrow-to-region 'disabled nil)                <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">Allows to narrow region</span>
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Useful Register setup when appending/prepending</span>
+(<span style="font-weight: bold;">setq</span> register-separator ?+)
+(set-register register-separator <span style="font-style: italic;">"\n\n"</span>)
+(set-register ?z '(file . <span style="font-style: italic;">"~/dotfiles/emacs/config.org"</span>))      <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">Allows quick jump to config</span>
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Useful functionality</span>
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'after-save-hook
+          'executable-make-buffer-file-executable-if-script-p)
+
+(global-set-key (kbd <span style="font-style: italic;">"C-x k"</span>) 'kill-this-buffer)
+
+(global-so-long-mode 1)
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Change Emacs backup files location</span>
+(<span style="font-weight: bold;">setq</span> backup-directory-alist
+      '((<span style="font-style: italic;">"."</span> . <span style="font-style: italic;">"~/.config/emacs"</span>)))
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">This change prevents the crashing of the React server after any file change</span>
+(<span style="font-weight: bold;">setq</span> create-lockfiles nil)
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">inherit PATH from shell, depends on `</span><span style="font-weight: bold; font-style: italic; text-decoration: underline;">exec-path-from-shell</span><span style="font-weight: bold; font-style: italic;">' package</span>
+(exec-path-from-shell-copy-envs '(<span style="font-style: italic;">"LANG"</span> <span style="font-style: italic;">"LC_TYPE"</span> <span style="font-style: italic;">"SSH_AUTH_SOCK"</span> <span style="font-style: italic;">"SSH_AGENT_PID"</span>))
+(exec-path-from-shell-initialize)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3748e7a" class="outline-3">
+<h3 id="org3748e7a">Custom prefix keys</h3>
+<div class="outline-text-3" id="text-org3748e7a">
+<p>
+Some functions get called often but are not binded to a keychord by default.
+Custom prefix keys allows defining a key and bind it to a function.
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Keys may be binded globally like below</span>
+(global-set-key (kbd <span style="font-style: italic;">"&lt;C-M-return&gt;"</span>) 'delete-other-windows)
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Define C-z key map</span>
+(define-prefix-command 'my-super-z-map)
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Bind C-z to custom prefix command</span>
+(global-set-key (kbd <span style="font-style: italic;">"C-z"</span>) 'my-super-z-map)
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Set of mapped keys in `</span><span style="font-weight: bold; font-style: italic; text-decoration: underline;">C-z</span><span style="font-weight: bold; font-style: italic;">'</span>
+(define-key my-super-z-map (kbd <span style="font-style: italic;">"o"</span>) 'browse-url-at-point)
+(define-key my-super-z-map (kbd <span style="font-style: italic;">"a"</span>) 'add-file-local-variable-prop-line)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge6abb5b" class="outline-3">
+<h3 id="orge6abb5b">Org</h3>
+<div class="outline-text-3" id="text-orge6abb5b">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">with-eval-after-load</span> 'org
+  (visual-line-mode 1) <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">wrap lines</span>
+  (<span style="font-weight: bold;">setq</span> org-src-fontify-natively t    <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">highlight syntax in code source blocks</span>
+        org-catch-invisible-edits t))
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Org Babel Setup</span>
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((shell . t)
+   (latex . t)
+   (python . t)
+   (ditaa . t)))
+</pre>
+</div>
+</div>
+<div id="outline-container-org3dd95e7" class="outline-4">
+<h4 id="org3dd95e7">Org Tree Slide</h4>
+<div class="outline-text-4" id="text-org3dd95e7">
+<p>
+Create slide-shows with Org mode.
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">with-eval-after-load</span> 'org-tree-slide-mode
+  (org-image-actual-width nil))
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org9961508" class="outline-3">
+<h3 id="org9961508">Extras</h3>
+<div class="outline-text-3" id="text-org9961508">
+<p>
+Nice to have packages and functionality.
+Most of these improve coding experience.
+</p>
+</div>
+<div id="outline-container-orgb3a1f36" class="outline-4">
+<h4 id="orgb3a1f36">Electricity</h4>
+<div class="outline-text-4" id="text-orgb3a1f36">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Electric Layout Mode</span>
+(add-hook 'css-mode 'electric-layout-mode)    <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">insert newline after the insertion of '{'</span>
+
+(electric-indent-mode +1) <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">toggle on the fly re-indentation</span>
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Electric Pairs</span>
+(add-hook 'mhtml-mode-hook 'electric-pair-local-mode)
+(add-hook 'emacs-lisp-mode-hook 'electric-pair-local-mode)
+(add-hook 'clojure-mode-hook 'electric-pair-local-mode)
+(add-hook 'lisp-interaction-mode-hook 'electric-pair-local-mode)
+(add-hook 'web-mode-hook 'electric-pair-local-mode)
+(add-hook 'ielm-mode-hook 'electric-pair-local-mode)
+(add-hook 'js-mode-hook 'electric-pair-local-mode)
+(add-hook 'typescript-mode-hook 'electric-pair-local-mode)
+(add-hook 'org-mode-hook 'electric-pair-local-mode)
+(add-hook 'scheme-mode-hook 'electric-pair-local-mode)
+(add-hook 'python-mode-hook 'electric-pair-local-mode)
+(add-hook 'css-mode-hook 'electric-pair-local-mode)
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Add extra pairs for js-mode</span>
+(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">js-mode-electric-pairs</span> '((?` . ?`)) <span style="font-style: italic;">"Electric pairs for js-mode."</span>)
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">js-mode-add-electric-pairs</span> ()
+  (<span style="font-weight: bold;">setq-local</span> electric-pair-pairs (append electric-pair-pairs js-mode-electric-pairs))
+  (<span style="font-weight: bold;">setq-local</span> electric-pair-text-pairs electric-pair-pairs))
+(add-hook 'js-mode-hook 'js-mode-add-electric-pairs)
+(add-hook 'mhtml-mode-hook 'js-mode-add-electric-pairs) <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">needs it for `script` tags</span>
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Subword Mode</span>
+(add-hook 'js-mode-hook #'subword-mode)
+(add-hook 'js-jsx-mode-hook #'subword-mode)
+(add-hook 'typescript-mode-hook #'subword-mode)
+(add-hook 'python-mode-hook #'subword-mode)
+(add-hook 'c-mode-hook #'subword-mode)
+(add-hook 'clojure-mode-hook #'subword-mode)
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Enable Dash font-locking</span>
+(eval-after-load 'dash '(dash-enable-font-lock))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org49ff447" class="outline-4">
+<h4 id="org49ff447">Prettify Symbols</h4>
+<div class="outline-text-4" id="text-org49ff447">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(global-prettify-symbols-mode t)
+
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">my-add-pretty-lambda</span> ()
+  <span style="font-style: italic;">"Make some word or string show as pretty Unicode symbols"</span>
+  (<span style="font-weight: bold;">push</span> '(<span style="font-style: italic;">"lambda"</span> . 955) prettify-symbols-alist)             <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">&#955;</span>
+  (<span style="font-weight: bold;">push</span> '(<span style="font-style: italic;">"-&gt;"</span> . 8594) prettify-symbols-alist)            <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">&#8594;</span>
+  (<span style="font-weight: bold;">push</span> '(<span style="font-style: italic;">"=&gt;"</span> . 8658) prettify-symbols-alist)            <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">&#8658;</span>
+  (<span style="font-weight: bold;">push</span> '(<span style="font-style: italic;">"map"</span> . 8614) prettify-symbols-alist)               <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">&#8614;</span>
+  )
+
+(add-hook 'tex-mode-hook 'my-add-pretty-lambda)
+
+(add-hook 'emacs-lisp-mode-hook
+          (<span style="font-weight: bold;">lambda</span> ()
+            <span style="font-style: italic;">"Beautify Emacs Symbols"</span>
+            (<span style="font-weight: bold;">push</span> '(<span style="font-style: italic;">"&lt;="</span> . <span style="font-style: italic;">"&#8804;"</span>) prettify-symbols-alist)))
+
+(add-hook 'scheme-mode-hook
+          (<span style="font-weight: bold;">lambda</span> ()
+            <span style="font-style: italic;">"Beautify Emacs Symbols"</span>
+            (<span style="font-weight: bold;">push</span> '(<span style="font-style: italic;">"&lt;="</span> . <span style="font-style: italic;">"&#8804;"</span>) prettify-symbols-alist)))
+
+(add-hook 'clojure-mode-hook
+          (<span style="font-weight: bold;">lambda</span> ()
+            <span style="font-style: italic;">"Beautify Clojure Symbols"</span>
+            (<span style="font-weight: bold;">push</span> '(<span style="font-style: italic;">"map"</span> . 8614) prettify-symbols-alist)
+            (<span style="font-weight: bold;">push</span> '(<span style="font-style: italic;">"-&gt;"</span> . 8594) prettify-symbols-alist)))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org799ce97" class="outline-4">
+<h4 id="org799ce97">Rainbow Delimiters</h4>
+<div class="outline-text-4" id="text-org799ce97">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(custom-set-faces
+       '(rainbow-delimiters-depth-1-face ((t (<span style="font-weight: bold;">:foreground</span> <span style="font-style: italic;">"blue violet"</span>))))
+       '(rainbow-delimiters-depth-2-face ((t (<span style="font-weight: bold;">:foreground</span> <span style="font-style: italic;">"red"</span>))))
+       '(rainbow-delimiters-depth-3-face ((t (<span style="font-weight: bold;">:foreground</span> <span style="font-style: italic;">"cyan3"</span>))))
+       '(rainbow-delimiters-depth-4-face ((t (<span style="font-weight: bold;">:foreground</span> <span style="font-style: italic;">"blue"</span>))))
+       '(rainbow-delimiters-depth-5-face ((t (<span style="font-weight: bold;">:foreground</span> <span style="font-style: italic;">"gold"</span>))))
+       '(rainbow-delimiters-depth-6-face ((t (<span style="font-weight: bold;">:foreground</span> <span style="font-style: italic;">"lavender"</span>))))
+       '(rainbow-delimiters-depth-7-face ((t (<span style="font-weight: bold;">:foreground</span> <span style="font-style: italic;">"ivory"</span>))))
+       '(rainbow-delimiters-depth-8-face ((t (<span style="font-weight: bold;">:foreground</span> <span style="font-style: italic;">"magenta"</span>))))
+       '(rainbow-delimiters-depth-9-face ((t (<span style="font-weight: bold;">:foreground</span> <span style="font-style: italic;">"red"</span>)))))
+
+(add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'ielm-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'lisp-interaction-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'lisp-mode-hook #'rainbow-delimiters-mode)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf554d10" class="outline-2">
+<h2 id="orgf554d10">Packages</h2>
+<div class="outline-text-2" id="text-orgf554d10">
+</div>
+<div id="outline-container-org694d338" class="outline-3">
+<h3 id="org694d338">Vertico / Orderless / CtrlF / Marginalia / Consult</h3>
+<div class="outline-text-3" id="text-org694d338">
+<p>
+Better buffer search and improved minibuffer experience
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">    (vertico-mode)
+    (marginalia-mode)
+    (ctrlf-mode +1)
+
+    (add-hook 'pdf-isearch-minor-mode-hook
+              (<span style="font-weight: bold;">lambda</span> () (ctrlf-local-mode -1))) <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">Disable when reading PDFs</span>
+
+    (<span style="font-weight: bold;">setq</span> completion-styles '(orderless)
+          completion-category-defaults nil
+          completion-category-overrides '((file (styles . (partial-completion)))))
+
+    <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Add prompt indicator to `</span><span style="font-weight: bold; font-style: italic; text-decoration: underline;">completing-read-multiple</span><span style="font-weight: bold; font-style: italic;">'.</span>
+    (<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">crm-indicator</span> (args)
+      (cons (concat <span style="font-style: italic;">"[CRM] "</span> (car args)) (cdr args)))
+    (advice-add #'completing-read-multiple <span style="font-weight: bold;">:filter-args</span> #'crm-indicator)
+
+
+    <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Do not allow the cursor in the minibuffer prompt</span>
+    (<span style="font-weight: bold;">setq</span> minibuffer-prompt-properties
+          '(read-only t cursor-intangible t face minibuffer-prompt))
+    (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
+
+    (advice-add #'vertico--setup <span style="font-weight: bold;">:after</span>
+                (<span style="font-weight: bold;">lambda</span> (<span style="font-weight: bold; text-decoration: underline;">&amp;rest</span> _)
+                  (<span style="font-weight: bold;">setq-local</span> completion-auto-help nil
+                              completion-show-inline-help nil)))
+
+    <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Consult</span>
+    (<span style="font-weight: bold;">setq</span> consult-project-root-function (<span style="font-weight: bold;">lambda</span> () (locate-dominating-file <span style="font-style: italic;">"."</span> <span style="font-style: italic;">".git"</span>)))
+
+    (global-set-key (kbd <span style="font-style: italic;">"C-x b"</span>) 'consult-buffer)
+    (global-set-key (kbd <span style="font-style: italic;">"C-x 4 b"</span>) 'consult-buffer-other-window)
+    (global-set-key (kbd <span style="font-style: italic;">"M-s G"</span>) 'consult-git-grep)
+    (global-set-key (kbd <span style="font-style: italic;">"M-g g"</span>) 'consult-goto-line)
+    (global-set-key (kbd <span style="font-style: italic;">"M-g M-g"</span>) 'consult-goto-line)
+    (global-set-key (kbd <span style="font-style: italic;">"M-g f"</span>) 'consult-flymake)
+    (global-set-key (kbd <span style="font-style: italic;">"C-x p b"</span>) 'consult-project-buffer)
+    (global-set-key (kbd <span style="font-style: italic;">"M-s l"</span>) 'consult-line)
+
+    <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Use Consult to select xref locations with preview</span>
+    (<span style="font-weight: bold;">setq</span> xref-show-xrefs-function #'consult-xref
+          xref-show-definitions-function #'consult-xref)
+
+    <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Enable vertico-multiform</span>
+(vertico-multiform-mode)
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Configure the display per completion category.</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Use the grid display for files and a buffer</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">for the consult-grep commands.</span>
+(<span style="font-weight: bold;">setq</span> vertico-multiform-categories
+      '(
+        <span style="font-weight: bold; font-style: italic;">;;</span><span style="font-weight: bold; font-style: italic;">(file grid)</span>
+        (consult-grep buffer)))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org433f368" class="outline-3">
+<h3 id="org433f368">Corfu &amp; Cape</h3>
+<div class="outline-text-3" id="text-org433f368">
+<p>
+Auto-completion in Emacs.
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">TAB cycle if there are only few candidates</span>
+(<span style="font-weight: bold;">setq</span> completion-cycle-threshold 3)
+(<span style="font-weight: bold;">setq</span> tab-always-indent 'complete)
+
+(<span style="font-weight: bold;">setq</span> corfu-auto t)
+(global-corfu-mode)
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Cape</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Add `</span><span style="font-weight: bold; font-style: italic; text-decoration: underline;">completion-at-point-functions</span><span style="font-weight: bold; font-style: italic;">', used by `</span><span style="font-weight: bold; font-style: italic; text-decoration: underline;">completion-at-point</span><span style="font-weight: bold; font-style: italic;">'.</span>
+(add-to-list 'completion-at-point-functions #'cape-file)
+(add-to-list 'completion-at-point-functions #'cape-dabbrev)
+(add-to-list 'completion-at-point-functions #'cape-keyword)
+(add-to-list 'completion-at-point-functions #'cape-sgml)
+(add-to-list 'completion-at-point-functions #'cape-symbol)
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb8d0dfc" class="outline-3">
+<h3 id="orgb8d0dfc">Dired</h3>
+<div class="outline-text-3" id="text-orgb8d0dfc">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">setq</span> dired-recursive-copies 'always <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">&#8220;always&#8221; means no asking</span>
+      dired-recursive-deletes 'top <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">&#8220;top&#8221; means ask once</span>
+      dired-dwim-target t)
+
+(add-hook 'dired-mode-hook '(lambda ()
+                              (dired-hide-details-mode 1)))
+
+(put 'dired-find-alternate-file 'disabled nil)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5a1052e" class="outline-3">
+<h3 id="org5a1052e">Web Development</h3>
+<div class="outline-text-3" id="text-org5a1052e">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">setq</span> css-indent-offset 2)
+
+(<span style="font-weight: bold;">setq</span> js-indent-level 2)
+
+(add-hook 'js-mode-hook
+          (<span style="font-weight: bold;">lambda</span> ()
+            (define-key js-mode-map (kbd <span style="font-style: italic;">"M-."</span>)
+              'xref-find-definitions)))
+
+(add-hook 'js-mode-hook 'prettier-js-mode)
+(<span style="font-weight: bold;">setq</span> prettier-js-args '(
+                         <span style="font-style: italic;">"--print-width"</span> <span style="font-style: italic;">"80"</span>
+                         <span style="font-style: italic;">"--bracket-same-line"</span> <span style="font-style: italic;">"true"</span>
+                         <span style="font-style: italic;">"--tab-width"</span> <span style="font-style: italic;">"2"</span>
+                         <span style="font-style: italic;">"--use-tabs"</span> <span style="font-style: italic;">"false"</span>
+                         <span style="font-style: italic;">"--semi"</span> <span style="font-style: italic;">"false"</span>
+                         <span style="font-style: italic;">"--single-quote"</span> <span style="font-style: italic;">"true"</span>
+                         <span style="font-style: italic;">"--bracket-spacing"</span> <span style="font-style: italic;">"true"</span>
+                         <span style="font-style: italic;">"--trailing-comma"</span> <span style="font-style: italic;">"none"</span>
+                         <span style="font-style: italic;">"--arrow-parens"</span> <span style="font-style: italic;">"avoid"</span>
+                         ))
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Configure Eglot Eslint/Flymake with JSX and TSX</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">wraps `</span><span style="font-weight: bold; font-style: italic; text-decoration: underline;">flymake-eslint-enable</span><span style="font-weight: bold; font-style: italic;">' to run only root dirs with `</span><span style="font-weight: bold; font-style: italic; text-decoration: underline;">.eslintrc</span><span style="font-weight: bold; font-style: italic;">' file</span>
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">me/flymake-eslint-enable-maybe</span> ()
+  <span style="font-style: italic;">"Enable `</span><span style="font-weight: bold; font-style: italic; text-decoration: underline;">flymake-eslint</span><span style="font-style: italic;">' based on the project configuration.</span>
+<span style="font-style: italic;">         Search for the project ESLint configuration to determine whether the buffer</span>
+<span style="font-style: italic;">         should be checked."</span>
+  (<span style="font-weight: bold;">when-let*</span> ((root (locate-dominating-file (buffer-file-name) <span style="font-style: italic;">"package.json"</span>))
+              (rc (locate-file <span style="font-style: italic;">".eslintrc"</span> (list root) '(<span style="font-style: italic;">".js"</span> <span style="font-style: italic;">".json"</span>))))
+    (make-local-variable 'exec-path)
+    (<span style="font-weight: bold;">push</span> (file-name-concat root <span style="font-style: italic;">"node_modules"</span> <span style="font-style: italic;">".bin"</span>) exec-path)
+    (flymake-eslint-enable)))
+
+
+
+(add-hook 'eglot-managed-mode-hook (<span style="font-weight: bold;">lambda</span> ()
+                                     (me/flymake-eslint-enable-maybe)))
+
+(add-hook 'typescript-mode-hook 'eglot-ensure)
+(add-hook 'js-mode-hook (<span style="font-weight: bold;">lambda</span> ()
+                          (<span style="font-weight: bold;">setq-local</span> eglot-stay-out-of '(flymake))
+                          (eglot-ensure)))
+(add-hook 'js-jsx-mode-hook (<span style="font-weight: bold;">lambda</span> ()
+                              (<span style="font-weight: bold;">setq-local</span> eglot-stay-out-of '(flymake))
+                              (eglot-ensure)))
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">NOTE maybe this hook is not needed anymore?</span>
+(add-hook 'js-mode-hook #'add-node-modules-path) <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">needed to pick up local `</span><span style="font-weight: bold; font-style: italic; text-decoration: underline;">node_modules/</span><span style="font-weight: bold; font-style: italic;">' executables</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org6cd8f70" class="outline-3">
+<h3 id="org6cd8f70">Git blame</h3>
+<div class="outline-text-3" id="text-org6cd8f70">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">with-eval-after-load</span> 'blamer
+  (<span style="font-weight: bold;">setq</span> blamer-author-formatter <span style="font-style: italic;">"&#9998; %s "</span>
+        blamer-idle-time 1
+        blamer-min-offset 20
+        blamer-datetime-formatter <span style="font-style: italic;">"[%s]"</span>
+        blamer-prettify-time-p t
+        blamer-uncommitted-changes-message <span style="font-style: italic;">"NO COMMITTED"</span>))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9e3f6ad" class="outline-3">
+<h3 id="org9e3f6ad">Clojure</h3>
+<div class="outline-text-3" id="text-org9e3f6ad">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(add-hook 'clojure-mode-hook 'eglot-ensure)
+(<span style="font-weight: bold;">setq</span> cider-clojure-cli-aliases <span style="font-style: italic;">"-M:dev"</span>
+      cider-eval-result-prefix <span style="font-style: italic;">"=&gt;"</span>
+      cider-repl-display-help-banner nil)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd6b2b51" class="outline-3">
+<h3 id="orgd6b2b51">Dev tools</h3>
+<div class="outline-text-3" id="text-orgd6b2b51">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Tree-sitter</span>
+
+ <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">activate tree-sitter on any buffer containing code for which it has a parser available</span>
+  (global-tree-sitter-mode)
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">you can easily see the difference tree-sitter-hl-mode makes for python, ts or tsx</span>
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">by switching on and off</span>
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
+
+ <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">we choose this instead of tsx-mode so that eglot can automatically figure out language for server</span>
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">see https://github.com/joaotavora/eglot/issues/624 and https://github.com/joaotavora/eglot#handling-quirky-servers</span>
+  (<span style="font-weight: bold;">define-derived-mode</span> <span style="font-weight: bold;">typescriptreact-mode</span> typescript-mode
+    <span style="font-style: italic;">"TypeScript TSX"</span>)
+
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">use our derived mode for tsx files</span>
+  (add-to-list 'auto-mode-alist '(<span style="font-style: italic;">"\\.tsx?\\'"</span> . typescriptreact-mode))
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">by default, typescript-mode is mapped to the treesitter typescript parser</span>
+  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">use our derived mode to map both .tsx AND .ts -&gt; typescriptreact-mode -&gt; treesitter tsx</span>
+  (add-to-list 'tree-sitter-major-mode-language-alist '(typescriptreact-mode . tsx))
+
+(apheleia-global-mode +1)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="creator"><a href="https://www.gnu.org/software/emacs/">Emacs</a> 27.1 (<a href="https://orgmode.org">Org</a> mode 9.3)</p>
+</div>
+</body>
+</html>
