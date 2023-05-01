@@ -3,11 +3,16 @@
 #+PROPERTY: header-args:emacs-lisp :tangle ~/.config/emacs/init.el :comments no :results silent
 
 * Getting Started
-In ~emacs/config.org~, run ~M-x org-babel-tangle~ when visiting the
-file.  This command will paste all the code blocks to ~init.el~, the
-file Emacs reads on start-up to update its configuration.
+This is my personal Emacs configuration. It's deployed on my personal
+[[https:maselisp.lat][site]] via the Emacs Org publish system that generates Org files to
+HTML. In other words, it's a static site generator that takes Org file
+input and outputs a static website.
 
-Keychord  ~C-c C-v C-t~ (~org-babel-tangle~) is also available instead.
+Try pulling from the [[https://github.com/lljr/blog/blob/main/content/Emacs.org][main file]] in the blog repo. In Emacs, navigate to
+this file and call ~M-x org-babel-tangle~, which bounds to keychord
+~C-c C-v C-t~ as a shortcut.  This will create or override the
+`init.el` file that Emacs reads to tweak its config.
+
 * Setup
 Emacs documents all of its variables.  When in doubt, call
 ~M-x describe-variable~ or ~M-x describe-function~.

@@ -1,0 +1,8 @@
+;;; -*- mode: org; -*-
+
+This site is built with Emacs built-in [[https://orgmode.org/manual/Publishing.html][Org mode publishing system]].
+
+Read ~build-site.el~ to learn more about this blog's configuration.
+
+
+Build the site by running the build script ~./build.sh~.
