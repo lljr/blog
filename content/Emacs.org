@@ -11,7 +11,7 @@ input and outputs a static website.
 Try pulling from the [[https://github.com/lljr/blog/blob/main/content/Emacs.org][main file]] in the blog repo. In Emacs, navigate to
 this file and call ~M-x org-babel-tangle~, which bounds to keychord
 ~C-c C-v C-t~ as a shortcut.  This will create or override the
-`init.el` file that Emacs reads to tweak its config.
+~init.el~ file that Emacs reads to tweak its config.
 
 * Setup
 Emacs documents all of its variables.  When in doubt, call
@@ -65,7 +65,7 @@ Keychords may also be used: ~C-h v [variable symbol]~, ~C-h f [function symbol]~
   ;; Useful Register setup when appending/prepending
   (setq register-separator ?+)
   (set-register register-separator "\n\n")
-  (set-register ?z '(file . "~/dotfiles/emacs/config.org"))      ; Allows quick jump to config
+  ;; (set-register ?z '(file . ""))
 
   ;; Useful functionality
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
