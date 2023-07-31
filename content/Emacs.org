@@ -318,19 +318,6 @@ Auto-completion in Emacs.
                 (define-key js-mode-map (kbd "M-.")
                   'xref-find-definitions)))
 
-    (add-hook 'js-mode-hook 'prettier-js-mode)
-    (setq prettier-js-args '(
-                             "--print-width" "80"
-                             "--bracket-same-line" "true"
-                             "--tab-width" "2"
-                             "--use-tabs" "false"
-                             "--semi" "false"
-                             "--single-quote" "true"
-                             "--bracket-spacing" "true"
-                             "--trailing-comma" "none"
-                             "--arrow-parens" "avoid"
-                             ))
-
     ;; Configure Eglot Eslint/Flymake with JSX and TSX
     ;; wraps `flymake-eslint-enable' to run only root dirs with `.eslintrc' file
     (defun me/flymake-eslint-enable-maybe ()
@@ -356,8 +343,12 @@ Auto-completion in Emacs.
                                   (setq-local eglot-stay-out-of '(flymake))
                                   (eglot-ensure)))
 
-    ;; NOTE maybe this hook is not needed anymore?
-    (add-hook 'js-mode-hook #'add-node-modules-path) ;; needed to pick up local `node_modules/' executables
+    (with-eval-after-load 'js-mode
+     ;; needed to pick up local `node_modules/' executables
+      (add-hook 'js-mode-hook #'add-node-modules-path)
+      (add-hook 'js-mode-hook #'prettier-js-mode)
+      )
+
   #+end_src
 ** Git blame
 #+begin_src emacs-lisp
