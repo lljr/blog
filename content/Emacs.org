@@ -85,6 +85,8 @@ Keychords may also be used: ~C-h v [variable symbol]~, ~C-h f [function symbol]~
   ;; inherit PATH from shell, depends on `exec-path-from-shell' package
   (exec-path-from-shell-copy-envs '("LANG" "LC_TYPE" "SSH_AUTH_SOCK" "SSH_AGENT_PID"))
   (exec-path-from-shell-initialize)
+  (setq project-vc-extra-root-markers '("package.json" "build.clj"))
+  (setq project-vc-ignores '("node_modules"))
 #+END_SRC
 
 ** Custom prefix keys
@@ -329,9 +331,7 @@ Auto-completion in Emacs.
 
 
     (add-hook 'eglot-managed-mode-hook (lambda ()
-                                         (setq-local project-vc-extra-root-markers '("package.json" "build.clj"))
                                          (me/flymake-eslint-enable-maybe)))
-
 
     (add-hook 'typescript-mode-hook 'eglot-ensure)
     (add-hook 'js-mode-hook (lambda ()
