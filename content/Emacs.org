@@ -311,8 +311,6 @@ Auto-completion in Emacs.
   #+begin_src emacs-lisp
     (setq css-indent-offset 2)
 
-    (setq js-indent-level 2)
-
     (add-hook 'js-mode-hook
               (lambda ()
                 (define-key js-mode-map (kbd "M-.")
@@ -331,9 +329,10 @@ Auto-completion in Emacs.
         (flymake-eslint-enable)))
 
 
-
     (add-hook 'eglot-managed-mode-hook (lambda ()
+                                         (setq-local project-vc-extra-root-markers '("package.json" "build.clj"))
                                          (me/flymake-eslint-enable-maybe)))
+
 
     (add-hook 'typescript-mode-hook 'eglot-ensure)
     (add-hook 'js-mode-hook (lambda ()
@@ -346,8 +345,7 @@ Auto-completion in Emacs.
     (with-eval-after-load 'js-mode
      ;; needed to pick up local `node_modules/' executables
       (add-hook 'js-mode-hook #'add-node-modules-path)
-      (add-hook 'js-mode-hook #'prettier-js-mode)
-      )
+      (add-hook 'js-mode-hook #'prettier-js-mode))
 
   #+end_src
 ** Git blame
@@ -363,10 +361,13 @@ Auto-completion in Emacs.
 
 ** Clojure
 #+begin_src emacs-lisp
-  (add-hook 'clojure-mode-hook 'eglot-ensure)
   (setq cider-clojure-cli-aliases "-M:dev"
         cider-eval-result-prefix "=>"
         cider-repl-display-help-banner nil)
+
+  (remove-hook 'flymake-diagnostic-functions #'flymake-proc-legacy-flymake)
+  (add-hook 'clojure-mode-hook #'flymake-kondor-setup)
+  (add-hook 'clojure-mode-hook 'eglot-ensure)
 #+end_src
 
 ** Dev tools
