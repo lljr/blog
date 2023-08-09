@@ -366,6 +366,8 @@ Auto-completion in Emacs.
 
   (remove-hook 'flymake-diagnostic-functions #'flymake-proc-legacy-flymake)
   (add-hook 'clojure-mode-hook #'flymake-kondor-setup)
+  (add-hook 'clojure-mode-hook (lambda ()
+                                 (add-hook 'after-save-hook #'eglot-format-buffer nil 'make-it-local)))
   (add-hook 'clojure-mode-hook 'eglot-ensure)
 #+end_src
 
