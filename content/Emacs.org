@@ -319,8 +319,8 @@ Auto-completion in Emacs.
     ;; wraps `flymake-eslint-enable' to run only root dirs with `.eslintrc' file
     (defun me/flymake-eslint-enable-maybe ()
       "Enable `flymake-eslint' based on the project configuration.
-             Search for the project ESLint configuration to determine whether the buffer
-             should be checked."
+                 Search for the project ESLint configuration to determine whether the buffer
+                 should be checked."
       (when-let* ((root (locate-dominating-file (buffer-file-name) "package.json"))
                   (rc (locate-file ".eslintrc" (list root) '(".js" ".json"))))
         (make-local-variable 'exec-path)
@@ -342,7 +342,7 @@ Auto-completion in Emacs.
                                   (eglot-ensure)))
 
     (with-eval-after-load 'js-mode
-     ;; needed to pick up local `node_modules/' executables
+      ;; needed to pick up local `node_modules/' executables
       (add-hook 'js-mode-hook #'add-node-modules-path)
       (add-hook 'js-mode-hook #'prettier-js-mode))
 
