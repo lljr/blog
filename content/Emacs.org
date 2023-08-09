@@ -28,7 +28,6 @@ Keychords may also be used: ~C-h v [variable symbol]~, ~C-h f [function symbol]~
   (tool-bar-mode -1)			; Remove toolbar
   (scroll-bar-mode -1) 			; Remove scroll bar
   (save-place-mode 1)           ; Remember cursor position
-  (blink-cursor-mode 0)			; Stop cursor blink
   (load-theme 'modus-vivendi nil)
 #+END_SRC
 
