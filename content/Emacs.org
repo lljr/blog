@@ -252,8 +252,6 @@ Most of these improve coding experience.
                               completion-show-inline-help nil)))
 
     ;; Consult
-    (setq consult-project-root-function (lambda () (locate-dominating-file "." ".git")))
-
     (global-set-key (kbd "C-x b") 'consult-buffer)
     (global-set-key (kbd "C-x 4 b") 'consult-buffer-other-window)
     (global-set-key (kbd "M-s G") 'consult-git-grep)
