@@ -276,6 +276,10 @@ Most of these improve coding experience.
         ;;(file grid)
         (consult-grep buffer)))
   #+end_src
+** Diff VC
+#+begin_src emacs-lisp
+  (global-diff-hl-mode)
+#+end_src
 ** Corfu & Cape
 Auto-completion in Emacs.
 #+BEGIN_SRC emacs-lisp
