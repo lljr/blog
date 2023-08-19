@@ -261,7 +261,6 @@ Auto-completion in Emacs.
   (add-to-list 'completion-at-point-functions #'cape-keyword)
   (add-to-list 'completion-at-point-functions #'cape-sgml)
   (add-to-list 'completion-at-point-functions #'cape-symbol)
-
 #+END_SRC
 ** Dired
 #+BEGIN_SRC emacs-lisp
@@ -313,17 +312,6 @@ Auto-completion in Emacs.
       (add-hook 'js-mode-hook #'prettier-js-mode))
 
   #+end_src
-** Git blame
-#+begin_src emacs-lisp
-  (with-eval-after-load 'blamer
-    (setq blamer-author-formatter "✎ %s "
-          blamer-idle-time 1
-          blamer-min-offset 20
-          blamer-datetime-formatter "[%s]"
-          blamer-prettify-time-p t
-          blamer-uncommitted-changes-message "NO COMMITTED"))
-#+end_src
-
 ** Clojure
 #+begin_src emacs-lisp
   (setq cider-clojure-cli-aliases "-M:dev"
