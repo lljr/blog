@@ -15,45 +15,45 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orga51d22b">Getting Started</a></li>
-<li><a href="#org582501a">Setup</a>
+<li><a href="#org6593d30">Getting Started</a></li>
+<li><a href="#org239ad09">Setup</a>
 <ul>
-<li><a href="#org09f9535">Package manager</a></li>
-<li><a href="#org82ae98d">Default Emacs UI</a></li>
-<li><a href="#orgdc6b615">General</a></li>
-<li><a href="#org985dbfb">Custom prefix keys</a></li>
-<li><a href="#org2289bd0">Org</a>
+<li><a href="#org7691325">Package manager</a></li>
+<li><a href="#orga63b8ea">Default Emacs UI</a></li>
+<li><a href="#orgb3338ab">General</a></li>
+<li><a href="#orgeebadfc">Custom prefix keys</a></li>
+<li><a href="#org1f23aa7">Org</a>
 <ul>
-<li><a href="#org4bc2092">Org Tree Slide</a></li>
+<li><a href="#org03ce6b0">Org Tree Slide</a></li>
 </ul>
 </li>
-<li><a href="#orgbb0eadf">Extras</a>
+<li><a href="#org8049c72">Extras</a>
 <ul>
-<li><a href="#orgfcef684">Electricity</a></li>
-<li><a href="#org25a42b1">Prettify Symbols</a></li>
-<li><a href="#org93c8f0a">Rainbow Delimiters</a></li>
+<li><a href="#orgfa53fa0">Electricity</a></li>
+<li><a href="#org5f0ac8e">Prettify Symbols</a></li>
+<li><a href="#org67eef6c">Rainbow Delimiters</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orga10f65e">Packages</a>
+<li><a href="#org1f5f74b">Packages</a>
 <ul>
-<li><a href="#org17cf775">Orderless / CtrlF / Marginalia / Consult</a></li>
-<li><a href="#org1151bed">Corfu &amp; Cape</a></li>
-<li><a href="#orgd8397af">Dired</a></li>
-<li><a href="#org3f58841">Web Development</a></li>
-<li><a href="#org9344fd1">Git blame</a></li>
-<li><a href="#org58bdeb4">Clojure</a></li>
-<li><a href="#org9720c1a">Dev tools</a></li>
+<li><a href="#org7180e1f">Orderless / Marginalia / Consult</a></li>
+<li><a href="#org35647c4">Corfu &amp; Cape</a></li>
+<li><a href="#org3349c22">Dired</a></li>
+<li><a href="#org5110283">Web Development</a></li>
+<li><a href="#orgc56056a">Git blame</a></li>
+<li><a href="#orgb1ad992">Clojure</a></li>
+<li><a href="#org6eebb76">Dev tools</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orga51d22b" class="outline-2">
-<h2 id="orga51d22b">Getting Started</h2>
-<div class="outline-text-2" id="text-orga51d22b">
+<div id="outline-container-org6593d30" class="outline-2">
+<h2 id="org6593d30">Getting Started</h2>
+<div class="outline-text-2" id="text-org6593d30">
 <p>
 This is my personal Emacs configuration. It's deployed on my personal
 <a href="https:maselisp.lat">site</a> via the Emacs Org publish system that generates Org files to
@@ -70,18 +70,18 @@ this file and call <code>M-x org-babel-tangle</code>, which bounds to keychord
 </div>
 </div>
 
-<div id="outline-container-org582501a" class="outline-2">
-<h2 id="org582501a">Setup</h2>
-<div class="outline-text-2" id="text-org582501a">
+<div id="outline-container-org239ad09" class="outline-2">
+<h2 id="org239ad09">Setup</h2>
+<div class="outline-text-2" id="text-org239ad09">
 <p>
 Emacs documents all of its variables.  When in doubt, call
 <code>M-x describe-variable</code> or <code>M-x describe-function</code>.
 Keychords may also be used: <code>C-h v [variable symbol]</code>, <code>C-h f [function symbol]</code> respectively.
 </p>
 </div>
-<div id="outline-container-org09f9535" class="outline-3">
-<h3 id="org09f9535">Package manager</h3>
-<div class="outline-text-3" id="text-org09f9535">
+<div id="outline-container-org7691325" class="outline-3">
+<h3 id="org7691325">Package manager</h3>
+<div class="outline-text-3" id="text-org7691325">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">package</span>)
 (add-to-list 'package-archives '(<span style="font-style: italic;">"melpa"</span> . <span style="font-style: italic;">"https://melpa.org/packages/"</span>))
@@ -89,9 +89,9 @@ Keychords may also be used: <code>C-h v [variable symbol]</code>, <code>C-h f [f
 </div>
 </div>
 </div>
-<div id="outline-container-org82ae98d" class="outline-3">
-<h3 id="org82ae98d">Default Emacs UI</h3>
-<div class="outline-text-3" id="text-org82ae98d">
+<div id="outline-container-orga63b8ea" class="outline-3">
+<h3 id="orga63b8ea">Default Emacs UI</h3>
+<div class="outline-text-3" id="text-orga63b8ea">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(menu-bar-mode -1)            <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">Disable for more headspace</span>
 (tool-bar-mode -1)                        <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">Remove toolbar</span>
@@ -104,9 +104,9 @@ Keychords may also be used: <code>C-h v [variable symbol]</code>, <code>C-h f [f
 </div>
 </div>
 
-<div id="outline-container-orgdc6b615" class="outline-3">
-<h3 id="orgdc6b615">General</h3>
-<div class="outline-text-3" id="text-orgdc6b615">
+<div id="outline-container-orgb3338ab" class="outline-3">
+<h3 id="orgb3338ab">General</h3>
+<div class="outline-text-3" id="text-orgb3338ab">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">setq-default</span> inhibit-startup-message t              <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">Don't show default emacs startup screen</span>
               window-combination-resize t            <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">Resize windows proportionally</span>
@@ -167,9 +167,9 @@ Keychords may also be used: <code>C-h v [variable symbol]</code>, <code>C-h f [f
 </div>
 </div>
 
-<div id="outline-container-org985dbfb" class="outline-3">
-<h3 id="org985dbfb">Custom prefix keys</h3>
-<div class="outline-text-3" id="text-org985dbfb">
+<div id="outline-container-orgeebadfc" class="outline-3">
+<h3 id="orgeebadfc">Custom prefix keys</h3>
+<div class="outline-text-3" id="text-orgeebadfc">
 <p>
 Some functions get called often but are not binded to a keychord by default.
 Custom prefix keys allows defining a key and bind it to a function.
@@ -191,9 +191,9 @@ Custom prefix keys allows defining a key and bind it to a function.
 </div>
 </div>
 
-<div id="outline-container-org2289bd0" class="outline-3">
-<h3 id="org2289bd0">Org</h3>
-<div class="outline-text-3" id="text-org2289bd0">
+<div id="outline-container-org1f23aa7" class="outline-3">
+<h3 id="org1f23aa7">Org</h3>
+<div class="outline-text-3" id="text-org1f23aa7">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">with-eval-after-load</span> 'org
   (visual-line-mode 1) <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">wrap lines</span>
@@ -210,9 +210,9 @@ Custom prefix keys allows defining a key and bind it to a function.
 </pre>
 </div>
 </div>
-<div id="outline-container-org4bc2092" class="outline-4">
-<h4 id="org4bc2092">Org Tree Slide</h4>
-<div class="outline-text-4" id="text-org4bc2092">
+<div id="outline-container-org03ce6b0" class="outline-4">
+<h4 id="org03ce6b0">Org Tree Slide</h4>
+<div class="outline-text-4" id="text-org03ce6b0">
 <p>
 Create slide-shows with Org mode.
 </p>
@@ -224,17 +224,17 @@ Create slide-shows with Org mode.
 </div>
 </div>
 </div>
-<div id="outline-container-orgbb0eadf" class="outline-3">
-<h3 id="orgbb0eadf">Extras</h3>
-<div class="outline-text-3" id="text-orgbb0eadf">
+<div id="outline-container-org8049c72" class="outline-3">
+<h3 id="org8049c72">Extras</h3>
+<div class="outline-text-3" id="text-org8049c72">
 <p>
 Nice to have packages and functionality.
 Most of these improve coding experience.
 </p>
 </div>
-<div id="outline-container-orgfcef684" class="outline-4">
-<h4 id="orgfcef684">Electricity</h4>
-<div class="outline-text-4" id="text-orgfcef684">
+<div id="outline-container-orgfa53fa0" class="outline-4">
+<h4 id="orgfa53fa0">Electricity</h4>
+<div class="outline-text-4" id="text-orgfa53fa0">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Electric Layout Mode</span>
 (add-hook 'css-mode 'electric-layout-mode)    <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">insert newline after the insertion of '{'</span>
@@ -278,9 +278,9 @@ Most of these improve coding experience.
 </div>
 </div>
 
-<div id="outline-container-org25a42b1" class="outline-4">
-<h4 id="org25a42b1">Prettify Symbols</h4>
-<div class="outline-text-4" id="text-org25a42b1">
+<div id="outline-container-org5f0ac8e" class="outline-4">
+<h4 id="org5f0ac8e">Prettify Symbols</h4>
+<div class="outline-text-4" id="text-org5f0ac8e">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(global-prettify-symbols-mode t)
 
@@ -313,9 +313,9 @@ Most of these improve coding experience.
 </div>
 </div>
 </div>
-<div id="outline-container-org93c8f0a" class="outline-4">
-<h4 id="org93c8f0a">Rainbow Delimiters</h4>
-<div class="outline-text-4" id="text-org93c8f0a">
+<div id="outline-container-org67eef6c" class="outline-4">
+<h4 id="org67eef6c">Rainbow Delimiters</h4>
+<div class="outline-text-4" id="text-org67eef6c">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(custom-set-faces
        '(rainbow-delimiters-depth-1-face ((t (<span style="font-weight: bold;">:foreground</span> <span style="font-style: italic;">"blue violet"</span>))))
@@ -339,37 +339,21 @@ Most of these improve coding experience.
 </div>
 </div>
 </div>
-<div id="outline-container-orga10f65e" class="outline-2">
-<h2 id="orga10f65e">Packages</h2>
-<div class="outline-text-2" id="text-orga10f65e">
+<div id="outline-container-org1f5f74b" class="outline-2">
+<h2 id="org1f5f74b">Packages</h2>
+<div class="outline-text-2" id="text-org1f5f74b">
 </div>
-<div id="outline-container-org17cf775" class="outline-3">
-<h3 id="org17cf775">Orderless / CtrlF / Marginalia / Consult</h3>
-<div class="outline-text-3" id="text-org17cf775">
+<div id="outline-container-org7180e1f" class="outline-3">
+<h3 id="org7180e1f">Orderless / Marginalia / Consult</h3>
+<div class="outline-text-3" id="text-org7180e1f">
 <p>
 Better buffer search and improved minibuffer experience
 </p>
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(marginalia-mode)
-(ctrlf-mode +1)
 
-(add-hook 'pdf-isearch-minor-mode-hook
-          (<span style="font-weight: bold;">lambda</span> () (ctrlf-local-mode -1))) <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">Disable when reading PDFs</span>
-
-(<span style="font-weight: bold;">setq</span> completion-styles '(orderless)
-      completion-category-defaults nil
-      completion-category-overrides '((file (styles . (partial-completion)))))
-
-<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Add prompt indicator to `</span><span style="font-weight: bold; font-style: italic; text-decoration: underline;">completing-read-multiple</span><span style="font-weight: bold; font-style: italic;">'.</span>
-(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">crm-indicator</span> (args)
-  (cons (concat <span style="font-style: italic;">"[CRM] "</span> (car args)) (cdr args)))
-(advice-add #'completing-read-multiple <span style="font-weight: bold;">:filter-args</span> #'crm-indicator)
-
-
-<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Do not allow the cursor in the minibuffer prompt</span>
-(<span style="font-weight: bold;">setq</span> minibuffer-prompt-properties
-      '(read-only t cursor-intangible t face minibuffer-prompt))
-(add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
+(<span style="font-weight: bold;">setq</span> completion-styles '(orderless basic)
+      completion-category-overrides '((file (styles basic partial-completion))))
 
 <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Consult</span>
 (global-set-key (kbd <span style="font-style: italic;">"C-x b"</span>) 'consult-buffer)
@@ -388,9 +372,9 @@ Better buffer search and improved minibuffer experience
 </div>
 </div>
 </div>
-<div id="outline-container-org1151bed" class="outline-3">
-<h3 id="org1151bed">Corfu &amp; Cape</h3>
-<div class="outline-text-3" id="text-org1151bed">
+<div id="outline-container-org35647c4" class="outline-3">
+<h3 id="org35647c4">Corfu &amp; Cape</h3>
+<div class="outline-text-3" id="text-org35647c4">
 <p>
 Auto-completion in Emacs.
 </p>
@@ -414,9 +398,9 @@ Auto-completion in Emacs.
 </div>
 </div>
 </div>
-<div id="outline-container-orgd8397af" class="outline-3">
-<h3 id="orgd8397af">Dired</h3>
-<div class="outline-text-3" id="text-orgd8397af">
+<div id="outline-container-org3349c22" class="outline-3">
+<h3 id="org3349c22">Dired</h3>
+<div class="outline-text-3" id="text-org3349c22">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">setq</span> dired-recursive-copies 'always <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">&#8220;always&#8221; means no asking</span>
       dired-recursive-deletes 'top <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">&#8220;top&#8221; means ask once</span>
@@ -430,9 +414,9 @@ Auto-completion in Emacs.
 </div>
 </div>
 </div>
-<div id="outline-container-org3f58841" class="outline-3">
-<h3 id="org3f58841">Web Development</h3>
-<div class="outline-text-3" id="text-org3f58841">
+<div id="outline-container-org5110283" class="outline-3">
+<h3 id="org5110283">Web Development</h3>
+<div class="outline-text-3" id="text-org5110283">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">setq</span> css-indent-offset 2)
 
@@ -474,9 +458,9 @@ Auto-completion in Emacs.
 </div>
 </div>
 </div>
-<div id="outline-container-org9344fd1" class="outline-3">
-<h3 id="org9344fd1">Git blame</h3>
-<div class="outline-text-3" id="text-org9344fd1">
+<div id="outline-container-orgc56056a" class="outline-3">
+<h3 id="orgc56056a">Git blame</h3>
+<div class="outline-text-3" id="text-orgc56056a">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">with-eval-after-load</span> 'blamer
   (<span style="font-weight: bold;">setq</span> blamer-author-formatter <span style="font-style: italic;">"&#9998; %s "</span>
@@ -490,9 +474,9 @@ Auto-completion in Emacs.
 </div>
 </div>
 
-<div id="outline-container-org58bdeb4" class="outline-3">
-<h3 id="org58bdeb4">Clojure</h3>
-<div class="outline-text-3" id="text-org58bdeb4">
+<div id="outline-container-orgb1ad992" class="outline-3">
+<h3 id="orgb1ad992">Clojure</h3>
+<div class="outline-text-3" id="text-orgb1ad992">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">setq</span> cider-clojure-cli-aliases <span style="font-style: italic;">"-M:dev"</span>
       cider-eval-result-prefix <span style="font-style: italic;">"=&gt;"</span>
@@ -508,9 +492,9 @@ Auto-completion in Emacs.
 </div>
 </div>
 
-<div id="outline-container-org9720c1a" class="outline-3">
-<h3 id="org9720c1a">Dev tools</h3>
-<div class="outline-text-3" id="text-org9720c1a">
+<div id="outline-container-org6eebb76" class="outline-3">
+<h3 id="org6eebb76">Dev tools</h3>
+<div class="outline-text-3" id="text-org6eebb76">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Tree-sitter</span>
 
