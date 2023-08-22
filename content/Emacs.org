@@ -25,10 +25,9 @@ Keychords may also be used: ~C-h v [variable symbol]~, ~C-h f [function symbol]~
 ** Default Emacs UI
 #+BEGIN_SRC emacs-lisp
   (menu-bar-mode -1)            ; Disable for more headspace
-  (tool-bar-mode -1)			  ; Remove toolbar
-  (scroll-bar-mode -1) 	      ; Remove scroll bar
+  (tool-bar-mode -1)			; Remove toolbar
+  (scroll-bar-mode -1) 			; Remove scroll bar
   (save-place-mode 1)           ; Remember cursor position
-  (icomplete-vertical-mode)     ; vertical completion minibuffer
   (load-theme 'modus-vivendi nil)
 #+END_SRC
 
@@ -222,13 +221,19 @@ Most of these improve coding experience.
    (add-hook 'lisp-mode-hook #'rainbow-delimiters-mode)
  #+end_src
 * Packages
-** Orderless / Marginalia / Consult
+** Vertico / Orderless / CtrlF / Marginalia / Consult
   Better buffer search and improved minibuffer experience
   #+begin_src emacs-lisp
+    (vertico-mode)
     (marginalia-mode)
 
     (setq completion-styles '(orderless basic)
           completion-category-overrides '((file (styles basic partial-completion))))
+
+    (advice-add #'vertico--setup :after
+                (lambda (&rest _)
+                  (setq-local completion-auto-help nil
+                              completion-show-inline-help nil)))
 
     ;; Consult
     (global-set-key (kbd "C-x b") 'consult-buffer)
@@ -243,7 +248,22 @@ Most of these improve coding experience.
     ;; Use Consult to select xref locations with preview
     (setq xref-show-xrefs-function #'consult-xref
           xref-show-definitions-function #'consult-xref)
+
+    ;; Enable vertico-multiform
+(vertico-multiform-mode)
+
+;; Configure the display per completion category.
+;; Use the grid display for files and a buffer
+;; for the consult-grep commands.
+(setq vertico-multiform-categories
+      '(
+        ;;(file grid)
+        (consult-grep buffer)))
   #+end_src
+** Diff VC
+#+begin_src emacs-lisp
+  (global-diff-hl-mode)
+#+end_src
 ** Corfu & Cape
 Auto-completion in Emacs.
 #+BEGIN_SRC emacs-lisp
