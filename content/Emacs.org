@@ -85,7 +85,7 @@ Keychords may also be used: ~C-h v [variable symbol]~, ~C-h f [function symbol]~
   ;; inherit PATH from shell, depends on `exec-path-from-shell' package
   (exec-path-from-shell-copy-envs '("LANG" "LC_TYPE" "SSH_AUTH_SOCK" "SSH_AGENT_PID"))
   (exec-path-from-shell-initialize)
-  (setq project-vc-extra-root-markers '("package.json" "build.clj"))
+  (setq project-vc-extra-root-markers '("tsconfig.json" "build.clj"))
   (setq project-vc-ignores '("node_modules"))
 #+END_SRC
 
@@ -314,19 +314,15 @@ Auto-completion in Emacs.
     (add-hook 'eglot-managed-mode-hook (lambda ()
                                          (me/flymake-eslint-enable-maybe)))
 
-    (add-hook 'typescript-mode-hook 'eglot-ensure)
+    (add-hook 'typescript-mode-hook (lambda ()
+                              (setq-local eglot-stay-out-of '(flymake))
+                              (eglot-ensure)))
     (add-hook 'js-mode-hook (lambda ()
                               (setq-local eglot-stay-out-of '(flymake))
                               (eglot-ensure)))
     (add-hook 'js-jsx-mode-hook (lambda ()
                                   (setq-local eglot-stay-out-of '(flymake))
                                   (eglot-ensure)))
-
-    (with-eval-after-load 'js-mode
-      ;; needed to pick up local `node_modules/' executables
-      (add-hook 'js-mode-hook #'add-node-modules-path)
-      (add-hook 'js-mode-hook #'prettier-js-mode))
-
   #+end_src
 ** Clojure
 #+begin_src emacs-lisp
@@ -361,6 +357,4 @@ Auto-completion in Emacs.
     ;; by default, typescript-mode is mapped to the treesitter typescript parser
     ;; use our derived mode to map both .tsx AND .ts -> typescriptreact-mode -> treesitter tsx
     (add-to-list 'tree-sitter-major-mode-language-alist '(typescriptreact-mode . tsx))
-
-  (apheleia-global-mode +1)
 #+end_src
