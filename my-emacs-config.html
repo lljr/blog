@@ -15,28 +15,27 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org070441a">My personal Emacs settings</a>
+<li><a href="#org5633505">My Emacs settings</a>
 <ul>
-<li><a href="#orgdb44bd7">Getting Started</a></li>
-<li><a href="#org3483b74">Setup</a>
+<li><a href="#org880d5ca">Setup</a>
 <ul>
-<li><a href="#org1390243">Package manager</a></li>
-<li><a href="#orge726e31">Default Emacs UI</a></li>
-<li><a href="#org225adcf">General</a></li>
-<li><a href="#org3f3f3f8">Custom prefix keys</a></li>
-<li><a href="#orged7ca04">Org</a></li>
-<li><a href="#orgcb3eee0">Extras</a></li>
+<li><a href="#org5f4baec">Package manager</a></li>
+<li><a href="#orga7158bf">Default Emacs UI</a></li>
+<li><a href="#org7c4ee86">General</a></li>
+<li><a href="#orgcc72304">Custom prefix keys</a></li>
+<li><a href="#orge2d9588">Org</a></li>
+<li><a href="#orgbff9a23">Extras</a></li>
 </ul>
 </li>
-<li><a href="#orgdbfa7f3">Packages</a>
+<li><a href="#org3edbe60">Packages</a>
 <ul>
-<li><a href="#org4633e57">Dired</a></li>
-<li><a href="#orgea75873">Vertico / Orderless / CtrlF / Marginalia / Consult</a></li>
-<li><a href="#orgff70f74">Corfu &amp; Cape</a></li>
-<li><a href="#org8abf25b">Web Development</a></li>
-<li><a href="#orgcff8e60">Rainbow Delimiters</a></li>
-<li><a href="#org4a70314">Clojure</a></li>
-<li><a href="#org53ec7ff">Dev tools</a></li>
+<li><a href="#org26eea1e">Dired</a></li>
+<li><a href="#org5c63825">Vertico / Orderless / CtrlF / Marginalia / Consult</a></li>
+<li><a href="#org18c198f">Corfu &amp; Cape</a></li>
+<li><a href="#org057c845">Web Development</a></li>
+<li><a href="#org51f38cc">Rainbow Delimiters</a></li>
+<li><a href="#orgaedf57f">Clojure</a></li>
+<li><a href="#org6a72151">Dev tools</a></li>
 </ul>
 </li>
 </ul>
@@ -46,13 +45,9 @@
 </div>
 
 
-<div id="outline-container-org070441a" class="outline-2">
-<h2 id="org070441a">My personal Emacs settings</h2>
-<div class="outline-text-2" id="text-org070441a">
-</div>
-<div id="outline-container-orgdb44bd7" class="outline-3">
-<h3 id="orgdb44bd7">Getting Started</h3>
-<div class="outline-text-3" id="text-orgdb44bd7">
+<div id="outline-container-org5633505" class="outline-2">
+<h2 id="org5633505">My Emacs settings</h2>
+<div class="outline-text-2" id="text-org5633505">
 <p>
 A fresh Emacs installation loads with custom programs that can be accessed
 with <a href="https://www.gnu.org/software/emacs/manual/html_mono/elisp.html">Elisp</a> forms. Forms may implement complete programs of almost any type.
@@ -87,15 +82,14 @@ Keychords may also be used: <code>C-h v [variable symbol]</code>,
 <code>C-h f [function symbol]</code> respectively.
 </p>
 </div>
-</div>
 
-<div id="outline-container-org3483b74" class="outline-3">
-<h3 id="org3483b74">Setup</h3>
-<div class="outline-text-3" id="text-org3483b74">
+<div id="outline-container-org880d5ca" class="outline-3">
+<h3 id="org880d5ca">Setup</h3>
+<div class="outline-text-3" id="text-org880d5ca">
 </div>
-<div id="outline-container-org1390243" class="outline-4">
-<h4 id="org1390243">Package manager</h4>
-<div class="outline-text-4" id="text-org1390243">
+<div id="outline-container-org5f4baec" class="outline-4">
+<h4 id="org5f4baec">Package manager</h4>
+<div class="outline-text-4" id="text-org5f4baec">
 <p>
 Get extra functionality by pointing to MELPA package directory.
 </p>
@@ -106,9 +100,9 @@ Get extra functionality by pointing to MELPA package directory.
 </div>
 </div>
 </div>
-<div id="outline-container-orge726e31" class="outline-4">
-<h4 id="orge726e31">Default Emacs UI</h4>
-<div class="outline-text-4" id="text-orge726e31">
+<div id="outline-container-orga7158bf" class="outline-4">
+<h4 id="orga7158bf">Default Emacs UI</h4>
+<div class="outline-text-4" id="text-orga7158bf">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(menu-bar-mode -1)            <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">Disable for more headspace</span>
 (tool-bar-mode -1)                      <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">Remove toolbar</span>
@@ -119,9 +113,9 @@ Get extra functionality by pointing to MELPA package directory.
 </div>
 </div>
 </div>
-<div id="outline-container-org225adcf" class="outline-4">
-<h4 id="org225adcf">General</h4>
-<div class="outline-text-4" id="text-org225adcf">
+<div id="outline-container-org7c4ee86" class="outline-4">
+<h4 id="org7c4ee86">General</h4>
+<div class="outline-text-4" id="text-org7c4ee86">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">setq-default</span> inhibit-startup-message t              <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">Don't show default emacs startup screen</span>
               window-combination-resize t            <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">Resize windows proportionally</span>
@@ -181,9 +175,9 @@ Get extra functionality by pointing to MELPA package directory.
 </div>
 </div>
 
-<div id="outline-container-org3f3f3f8" class="outline-4">
-<h4 id="org3f3f3f8">Custom prefix keys</h4>
-<div class="outline-text-4" id="text-org3f3f3f8">
+<div id="outline-container-orgcc72304" class="outline-4">
+<h4 id="orgcc72304">Custom prefix keys</h4>
+<div class="outline-text-4" id="text-orgcc72304">
 <p>
 Some functions get called often but are not binded to a keychord by default.
 Custom prefix keys allows defining a key and bind it to a function.
@@ -205,9 +199,9 @@ Custom prefix keys allows defining a key and bind it to a function.
 </div>
 </div>
 
-<div id="outline-container-orged7ca04" class="outline-4">
-<h4 id="orged7ca04">Org</h4>
-<div class="outline-text-4" id="text-orged7ca04">
+<div id="outline-container-orge2d9588" class="outline-4">
+<h4 id="orge2d9588">Org</h4>
+<div class="outline-text-4" id="text-orge2d9588">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">with-eval-after-load</span> 'org
   (visual-line-mode 1) <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">wrap lines</span>
@@ -225,8 +219,8 @@ Custom prefix keys allows defining a key and bind it to a function.
 </div>
 </div>
 <ul class="org-ul">
-<li><a id="orgddfcb66"></a>Org Tree Slide<br />
-<div class="outline-text-5" id="text-orgddfcb66">
+<li><a id="orga0a4edc"></a>Org Tree Slide<br />
+<div class="outline-text-5" id="text-orga0a4edc">
 <p>
 Create slide-shows with Org mode.
 </p>
@@ -239,17 +233,17 @@ Create slide-shows with Org mode.
 </li>
 </ul>
 </div>
-<div id="outline-container-orgcb3eee0" class="outline-4">
-<h4 id="orgcb3eee0">Extras</h4>
-<div class="outline-text-4" id="text-orgcb3eee0">
+<div id="outline-container-orgbff9a23" class="outline-4">
+<h4 id="orgbff9a23">Extras</h4>
+<div class="outline-text-4" id="text-orgbff9a23">
 <p>
 Nice to have packages and functionality.
 Most of these improve coding experience.
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="org3010fd1"></a>Electricity<br />
-<div class="outline-text-5" id="text-org3010fd1">
+<li><a id="orgdc42ae5"></a>Electricity<br />
+<div class="outline-text-5" id="text-orgdc42ae5">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Electric Layout Mode</span>
 (add-hook 'css-mode 'electric-layout-mode)    <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">insert newline after the insertion of '{'</span>
@@ -293,8 +287,8 @@ Most of these improve coding experience.
 </div>
 </li>
 
-<li><a id="org2e3512c"></a>Prettify Symbols<br />
-<div class="outline-text-5" id="text-org2e3512c">
+<li><a id="org708b005"></a>Prettify Symbols<br />
+<div class="outline-text-5" id="text-org708b005">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(global-prettify-symbols-mode t)
 
@@ -331,13 +325,13 @@ Most of these improve coding experience.
 </div>
 </div>
 
-<div id="outline-container-orgdbfa7f3" class="outline-3">
-<h3 id="orgdbfa7f3">Packages</h3>
-<div class="outline-text-3" id="text-orgdbfa7f3">
+<div id="outline-container-org3edbe60" class="outline-3">
+<h3 id="org3edbe60">Packages</h3>
+<div class="outline-text-3" id="text-org3edbe60">
 </div>
-<div id="outline-container-org4633e57" class="outline-4">
-<h4 id="org4633e57">Dired</h4>
-<div class="outline-text-4" id="text-org4633e57">
+<div id="outline-container-org26eea1e" class="outline-4">
+<h4 id="org26eea1e">Dired</h4>
+<div class="outline-text-4" id="text-org26eea1e">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">setq</span> dired-recursive-copies 'always <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">&#8220;always&#8221; means no asking</span>
       dired-recursive-deletes 'top <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">&#8220;top&#8221; means ask once</span>
@@ -351,9 +345,9 @@ Most of these improve coding experience.
 </div>
 </div>
 </div>
-<div id="outline-container-orgea75873" class="outline-4">
-<h4 id="orgea75873">Vertico / Orderless / CtrlF / Marginalia / Consult</h4>
-<div class="outline-text-4" id="text-orgea75873">
+<div id="outline-container-org5c63825" class="outline-4">
+<h4 id="org5c63825">Vertico / Orderless / CtrlF / Marginalia / Consult</h4>
+<div class="outline-text-4" id="text-org5c63825">
 <p>
 Better buffer search and improved minibuffer experience
 </p>
@@ -397,9 +391,9 @@ Better buffer search and improved minibuffer experience
 </div>
 </div>
 </div>
-<div id="outline-container-orgff70f74" class="outline-4">
-<h4 id="orgff70f74">Corfu &amp; Cape</h4>
-<div class="outline-text-4" id="text-orgff70f74">
+<div id="outline-container-org18c198f" class="outline-4">
+<h4 id="org18c198f">Corfu &amp; Cape</h4>
+<div class="outline-text-4" id="text-org18c198f">
 <p>
 Auto-completion in Emacs.
 </p>
@@ -422,9 +416,9 @@ Auto-completion in Emacs.
 </div>
 </div>
 </div>
-<div id="outline-container-org8abf25b" class="outline-4">
-<h4 id="org8abf25b">Web Development</h4>
-<div class="outline-text-4" id="text-org8abf25b">
+<div id="outline-container-org057c845" class="outline-4">
+<h4 id="org057c845">Web Development</h4>
+<div class="outline-text-4" id="text-org057c845">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">setq</span> css-indent-offset 2)
 
@@ -462,9 +456,9 @@ Auto-completion in Emacs.
 </div>
 </div>
 </div>
-<div id="outline-container-orgcff8e60" class="outline-4">
-<h4 id="orgcff8e60">Rainbow Delimiters</h4>
-<div class="outline-text-4" id="text-orgcff8e60">
+<div id="outline-container-org51f38cc" class="outline-4">
+<h4 id="org51f38cc">Rainbow Delimiters</h4>
+<div class="outline-text-4" id="text-org51f38cc">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(custom-set-faces
        '(rainbow-delimiters-depth-1-face ((t (<span style="font-weight: bold;">:foreground</span> <span style="font-style: italic;">"blue violet"</span>))))
@@ -486,9 +480,9 @@ Auto-completion in Emacs.
 </div>
 </div>
 </div>
-<div id="outline-container-org4a70314" class="outline-4">
-<h4 id="org4a70314">Clojure</h4>
-<div class="outline-text-4" id="text-org4a70314">
+<div id="outline-container-orgaedf57f" class="outline-4">
+<h4 id="orgaedf57f">Clojure</h4>
+<div class="outline-text-4" id="text-orgaedf57f">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="font-weight: bold;">setq</span> cider-clojure-cli-aliases <span style="font-style: italic;">"-M:dev"</span>
       cider-eval-result-prefix <span style="font-style: italic;">"=&gt;"</span>
@@ -504,9 +498,9 @@ Auto-completion in Emacs.
 </div>
 </div>
 
-<div id="outline-container-org53ec7ff" class="outline-4">
-<h4 id="org53ec7ff">Dev tools</h4>
-<div class="outline-text-4" id="text-org53ec7ff">
+<div id="outline-container-org6a72151" class="outline-4">
+<h4 id="org6a72151">Dev tools</h4>
+<div class="outline-text-4" id="text-org6a72151">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Tree-sitter</span>
 
