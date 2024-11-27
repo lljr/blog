@@ -3,8 +3,7 @@
 #+PROPERTY: header-args:emacs-lisp :tangle ~/.emacs.d/init.el :comments no :results silent
 
 
-* My personal Emacs settings
-** Getting Started
+* My Emacs settings
 A fresh Emacs installation loads with custom programs that can be accessed
 with [[https://www.gnu.org/software/emacs/manual/html_mono/elisp.html][Elisp]] forms. Forms may implement complete programs of almost any type.
 To illustrate, Emacs has built into it a Tetris implementation, which can be
